@@ -3,14 +3,15 @@ const Book = require("../models/Book");
 
 const route = express.Router();
 
-route.get("/:bookId", async (req, res) => {
-  const bookId = req.params.bookId;
-  const result = await Book.getBookById(bookId);
+route.get("/all", async (req, res) => {
+  const result = await Book.getAll();
+  console.log(result);
   res.json(result);
 });
 
-route.get("/all", async (req, res) => {
-  const result = await Book.getAll();
+route.get("/:bookId", async (req, res) => {
+  const bookId = req.params.bookId;
+  const result = await Book.getBookById(bookId);
   res.json(result);
 });
 
